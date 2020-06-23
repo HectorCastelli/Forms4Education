@@ -8,5 +8,10 @@ function onInstall(e: GoogleAppsScript.Events.AddonOnInstall) {
 }
 
 function onOpen(e: GoogleAppsScript.Events.SheetsOnOpen) {
+  if (e.authMode == ScriptApp.AuthMode.LIMITED) {
+    Forms4Education.Sheets.initialize();
+  } else {
+    Forms4Education.UI.askUserToEnableAddon();
+  }
   Forms4Education.UI.createAddOnMenu();
 }
