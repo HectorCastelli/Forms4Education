@@ -42,6 +42,9 @@ const localizedStrings = {
   questionBank: {
     en: "Question Banks",
   },
+  student: {
+    en: "Students",
+  },
   help: {
     en: "Help",
   },

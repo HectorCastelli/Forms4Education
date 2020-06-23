@@ -18,6 +18,14 @@ namespace Forms4Education {
               "Forms4Education.QuestionBanks.createQuestionBank"
             )
         )
+        .addSubMenu(
+          ui
+            .createMenu(getLocalizedText("student"))
+            .addItem(
+              getLocalizedText("createNew"),
+              "Forms4Education.Students.createStudent"
+            )
+        )
         .addSeparator()
         .addSubMenu(
           ui
