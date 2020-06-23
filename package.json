@@ -1,0 +1,28 @@
+{
+  "name": "forms4education",
+  "version": "1.0.0",
+  "description": "A G-Suite Add-On that leverages multiple Forms to create custom and dynamic tests with the intent of reducing cheating.",
+  "main": "addon/forms4education.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HectorCastelli/Forms4Education.git"
+  },
+  "keywords": [
+    "Add-On",
+    "G-Suite",
+    "Education"
+  ],
+  "author": "Hector Castelli Zacharias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HectorCastelli/Forms4Education/issues"
+  },
+  "homepage": "https://github.com/HectorCastelli/Forms4Education#readme",
+  "dependencies": {
+    "@types/google-apps-script": "^1.0.14",
+    "@types/google-apps-script-oauth2": "^38.0.0"
+  }
+}
