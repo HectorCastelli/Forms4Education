@@ -1,3 +1,5 @@
+import { getLocalizedText, localizationKeys } from "./localization";
+
 namespace Forms4Education {
   export namespace UI {
     /**
@@ -8,12 +10,18 @@ namespace Forms4Education {
     export function createAddOnMenu(): void {
       const ui = SpreadsheetApp.getUi();
       ui.createAddonMenu()
-        .addItem("Initialize Spreadsheet", "Forms4Education.Sheet.initialize")
+        .addItem(
+          getLocalizedText("initializeSpreadsheet"),
+          "Forms4Education.Sheet.initialize"
+        )
         .addSeparator()
         .addSubMenu(
           ui
-            .createMenu("Help")
-            .addItem("General Help", "Forms4Education.Help.showManual")
+            .createMenu(getLocalizedText("help"))
+            .addItem(
+              getLocalizedText("generalHelp"),
+              "Forms4Education.Help.showManual"
+            )
         )
         .addToUi();
     }
