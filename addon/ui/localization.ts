@@ -72,6 +72,21 @@ const localizedStrings = {
   endDate: {
     en: "End Date",
   },
+  name: {
+    en: "Name",
+  },
+  email: {
+    en: "Email",
+  },
+  weight: {
+    en: "Weight",
+  },
+  mandatoryQuestions: {
+    en: "Mandatory Questions",
+  },
+  optionalQuestions: {
+    en: "Optional Questions",
+  },
   applyTest: {
     en: "Apply Test $testname now.",
   },

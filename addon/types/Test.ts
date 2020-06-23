@@ -27,14 +27,14 @@ namespace Forms4Education {
         );
         Forms4Education.Sheets.setSheetDimensions(newTestSheet, 4, 7 + test.questionBanks.length + test.students.length);
         newTestSheet.getRange(1, 1, 7 + test.questionBanks.length + test.students.length, 4).setValues([
-          ["Name", test.name, null, null],
-          ["Start Date", test.startDate, null, null],
-          ["End Date", test.endDate, null, null],
-          ["Question Banks", null, null, null],
-          ["Name", "Weight", "Mandatory Questions", "Optional Questions"],
+          [getLocalizedText("name"), test.name, null, null],
+          [getLocalizedText("startDate"), test.startDate, null, null],
+          [getLocalizedText("endDate"), test.endDate, null, null],
+          [getLocalizedText("questionBank"), null, null, null],
+          [getLocalizedText("name"), getLocalizedText("weight"), getLocalizedText("mandatoryQuestions"), getLocalizedText("optionalQuestions")],
           ...test.questionBanks.map(questionConfig=>[questionConfig.questionBank.name, questionConfig.gradeWeight, questionConfig.mandatoryQuestions, questionConfig.optionalQuestions]),
-          ["Students", null, null, null],
-          ["Name", "Email", null, null],
+          [getLocalizedText("student"), null, null, null],
+          [getLocalizedText("name"), getLocalizedText("email"), null, null],
           ...test.students.map(student=>[student.name, student.email, null, null])
         ]);
       }
