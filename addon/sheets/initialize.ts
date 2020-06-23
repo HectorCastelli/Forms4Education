@@ -4,6 +4,7 @@ namespace Forms4Education {
       //TODO: Create Necessary Spreadsheet Tabs for processing
 
       Forms4Education.QuestionBanks.initializeQuestionBankSheet();
+      Forms4Education.Students.initializeStudentSheet();
     }
   }
 }

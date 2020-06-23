@@ -24,7 +24,7 @@ namespace Forms4Education {
         currentSpreadsheet.getSheetByName(Constants.sheetNames.students) == null
       ) {
         const newStudentSheet = currentSpreadsheet.insertSheet(
-          Constants.sheetNames.questionBank
+          Constants.sheetNames.students
         );
         Forms4Education.Sheets.setSheetDimensions(newStudentSheet, 2, 1);
         newStudentSheet.getRange(1, 1, 1, 2).setValues([["Name", "Email"]]);

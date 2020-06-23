@@ -26,6 +26,14 @@ namespace Forms4Education {
               "Forms4Education.Students.createStudent"
             )
         )
+        .addSubMenu(
+          ui
+            .createMenu(getLocalizedText("test"))
+            .addItem(
+              getLocalizedText("createNew"),
+              "Forms4Education.Tests.createTest"
+            )
+        )
         .addSeparator()
         .addSubMenu(
           ui

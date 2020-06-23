@@ -36,6 +36,9 @@ const localizedStrings = {
   insertLink: {
     en: "Insert the Link",
   },
+  insertEmail: {
+    en: "Insert the Email",
+  },
   initializeSpreadsheet: {
     en: "Initialize Add-On",
   },
@@ -44,6 +47,9 @@ const localizedStrings = {
   },
   student: {
     en: "Students",
+  },
+  test: {
+    en: "Tests",
   },
   help: {
     en: "Help",
@@ -56,6 +62,12 @@ const localizedStrings = {
   },
   studentTestIdDescription: {
     en: "Insert your unique Test ID here to identify your answer.",
+  },
+  startDate: {
+    en: "Start Date",
+  },
+  endDate: {
+    en: "End Date",
   },
   applyTest: {
     en: "Apply Test $testname now.",

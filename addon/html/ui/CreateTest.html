@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://ssl.gstatic.com/docs/script/css/add-ons.css"
+    />
+    <script>
+      document.getElementById("formId").addEventListener("submit", submitForm);
+    </script>
+  </head>
+  <body>
+    <form id="formId">
+      <div>
+        <label for="testName"><?= getLocalizedText("insertName") ?></label>
+        <input type="text" name="testName" id="testName" />
+      </div>
+      <div>
+        <label for="testName"><?= getLocalizedText("startDate") ?></label>
+        <input type="datetime" name="startDate" id="startDate" />
+      </div>
+      <div>
+        <label for="testName"><?= getLocalizedText("endDate") ?></label>
+        <input type="datetime" name="endDate" id="endDate" />
+      </div>
+      <div>
+        <h3><?= getLocalizedText("student") ?></h3>
+        <? for (var i = 0; i < students.length; i++) { ?>
+          <div>
+            <input type="checkbox" id="student<?=i>" name="student<?=i>" value="<?= students[i].email>" />
+            <label for="student<?=i>"><?= students[i].name></label>
+          </div>
+          </tr>
+        <? } ?>
+      </div>
+      <div>
+        <h3><?= getLocalizedText("questionBank") ?></h3>
+        <? for (var i = 0; i < questionBanks.length; i++) { ?>
+          <div>
+            <input type="checkbox" id="questionBanks<?=i>" name="questionBanks<?=i>" value="<?= questionBanks[i].name>" />
+            <label for="questionBanks<?=i>"><?= questionBanks[i].name></label>
+          </div>
+          </tr>
+        <? } ?>
+      </div>
+    </form>
+    <script>
+      submitForm = function () {
+        var form = document.getElementById("formId");
+      };
+    </script>
+  </body>
+</html>
