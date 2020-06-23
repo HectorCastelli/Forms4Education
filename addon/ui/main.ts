@@ -1,4 +1,4 @@
-import { getLocalizedText, localizationKeys } from "./localization";
+import { getLocalizedText } from "./localization";
 
 namespace Forms4Education {
   export namespace UI {
@@ -12,7 +12,7 @@ namespace Forms4Education {
       ui.createAddonMenu()
         .addItem(
           getLocalizedText("initializeSpreadsheet"),
-          "Forms4Education.Sheet.initialize"
+          "Forms4Education.Sheets.initialize"
         )
         .addSeparator()
         .addSubMenu(

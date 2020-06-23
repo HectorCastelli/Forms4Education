@@ -5,6 +5,11 @@ class QuestionBank {
   driveFolder: GoogleAppsScript.Drive.Folder;
   forms: GoogleAppsScript.Forms.Form[] = [];
 
+  constructor(name: string, driveFolderUrl: string) {
+    this.name = name;
+    this.load(driveFolderUrl);
+  }
+
   /**
    * Loads data to a QuestionBank based on a Drive folder URL
    *
@@ -84,7 +89,7 @@ class QuestionBank {
               break;
           }
         });
-      //TODO: Add option to set quiz feedback to Manual after review (Pending FR with Google)
+      //TODO: Add option to set quiz feedback to Manual after review (Pending FR with Google: https://issuetracker.google.com/issues/159665379)
       //Add the Test ID question to the form if it didn't exist yet.
       if (
         formFile.getItems(FormApp.ItemType.TEXT).filter((item) => {
@@ -125,5 +130,44 @@ class QuestionBank {
       taken[x] = --length in taken ? taken[length] : length;
     }
     return result;
+  }
+}
+namespace Forms4Education {
+  export namespace QuestionBanks {
+    /**
+     * Initializes the Spreadsheet tabs required for Question Banks functionality
+     *
+     * @export
+     */
+    export function initializeQuestionBankSheet() {
+      const currentSpreadsheet = SpreadsheetApp.getActive()!;
+      if (
+        currentSpreadsheet.getSheetByName(Constants.sheetNames.questionBank) ==
+        null
+      ) {
+        const newQuestionBankSheet = currentSpreadsheet.insertSheet(
+          Constants.sheetNames.questionBank
+        );
+        Forms4Education.Sheets.setSheetDimensions(newQuestionBankSheet, 2, 1);
+        newQuestionBankSheet
+          .getRange(1, 1, 1, 2)
+          .setValues([["Name", "Drive Folder Link"]]);
+      }
+    }
+
+    /**
+     * Loads all Question Banks definitions from the Spreadsheet
+     *
+     * @export
+     * @returns {QuestionBank[]}
+     */
+    export function loadQuestionBanksFromSheet(): QuestionBank[] {
+      return SpreadsheetApp.getActive()
+        .getSheetByName(Constants.sheetNames.questionBank)
+        .getDataRange()
+        .getValues()
+        .slice(1)
+        .map((row) => new QuestionBank(row[0], row[1]));
+    }
   }
 }
