@@ -21,11 +21,11 @@
       </div>
       <div class="formItem">
         <label for="testName"><?= getLocalizedText("startDate") ?></label>
-        <input type="datetime" name="startDate" id="startDate" />
+        <input type="datetime-local" name="startDate" id="startDate" min="<?= new Date().toISOString() ?>"/>
       </div>
       <div class="formItem">
         <label for="testName"><?= getLocalizedText("endDate") ?></label>
-        <input type="datetime" name="endDate" id="endDate" />
+        <input type="datetime-local" name="endDate" id="endDate"  min="<?= new Date().toISOString() ?>"/>
       </div>
       <div>
         <h3><?= getLocalizedText("student") ?></h3>
@@ -52,7 +52,8 @@
       </div>
     </form>
     <script>
-      var submitForm = function (e) {
+      var submitForm = function (event) {
+        event.preventDefault();
         var form = document.getElementById("formId");
         var formData = {};
         for (e of form.elements) {
@@ -65,8 +66,7 @@
             formData[e.name] = [formData[e.name], e.value];
           }
         }
-        google.script.run.insertTest(formData);
-        google.script.host.close();
+        google.script.run.withSuccessHandler(google.script.host.close).insertTest(formData);
       };
 
       document.getElementById("formId").addEventListener("submit", submitForm, false);
