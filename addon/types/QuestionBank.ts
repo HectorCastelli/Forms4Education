@@ -1,4 +1,5 @@
 import { getLocalizedText } from "../ui/localization";
+import { Constants } from "./constants";
 
 class QuestionBank {
   name: string = "";
