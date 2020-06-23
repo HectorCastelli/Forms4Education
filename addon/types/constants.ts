@@ -1,5 +1,5 @@
 namespace Constants {
   export enum sheetNames {
-    questionBank = "QuestionBank",
+    questionBank = "Question Banks",
   }
 }

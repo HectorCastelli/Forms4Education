@@ -169,5 +169,33 @@ namespace Forms4Education {
         .slice(1)
         .map((row) => new QuestionBank(row[0], row[1]));
     }
+
+    /**
+     * Prompts the user for Name and Link of the Question Bank
+     *
+     * @export
+     */
+    export function createQuestionBank() {
+      const ui = SpreadsheetApp.getUi();
+      const namePrompt = ui.prompt(
+        getLocalizedText("insertName"),
+        ui.ButtonSet.OK_CANCEL
+      );
+      const linkPrompt = ui.prompt(
+        getLocalizedText("insertLink"),
+        ui.ButtonSet.OK_CANCEL
+      );
+      if (
+        namePrompt.getSelectedButton() == ui.Button.OK &&
+        linkPrompt.getSelectedButton() == ui.Button.OK
+      ) {
+        SpreadsheetApp.getActive()
+          .getSheetByName(Constants.sheetNames.questionBank)
+          .appendRow([
+            namePrompt.getResponseText(),
+            linkPrompt.getResponseText(),
+          ]);
+      }
+    }
   }
 }

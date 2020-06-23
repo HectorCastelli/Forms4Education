@@ -24,8 +24,23 @@ export function getLocalizedText(
 }
 
 const localizedStrings = {
+  createNew: {
+    en: "Create",
+  },
+  delete: {
+    en: "Remove",
+  },
+  insertName: {
+    en: "Insert the Name",
+  },
+  insertLink: {
+    en: "Insert the Link",
+  },
   initializeSpreadsheet: {
     en: "Initialize Add-On",
+  },
+  questionBank: {
+    en: "Question Banks",
   },
   help: {
     en: "Help",

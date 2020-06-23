@@ -10,9 +10,13 @@ namespace Forms4Education {
     export function createAddOnMenu(): void {
       const ui = SpreadsheetApp.getUi();
       ui.createAddonMenu()
-        .addItem(
-          getLocalizedText("initializeSpreadsheet"),
-          "Forms4Education.Sheets.initialize"
+        .addSubMenu(
+          ui
+            .createMenu(getLocalizedText("questionBank"))
+            .addItem(
+              getLocalizedText("createNew"),
+              "Forms4Education.QuestionBanks.createQuestionBank"
+            )
         )
         .addSeparator()
         .addSubMenu(
@@ -24,6 +28,21 @@ namespace Forms4Education {
             )
         )
         .addToUi();
+    }
+
+    /**
+     * Creates a prompt to the user explaining what they need to do in order to enable the addon, and therefore correctly initialize it.
+     *
+     * @export
+     */
+    export function askUserToEnableAddon(): void {
+      const ui = SpreadsheetApp.getUi();
+      ui.alert(
+        "Forms4Education not enabled in this document!",
+        `Please, go to "Add-ons" and then "Manage add-ons".
+        Find the Forms4Education entry and click "Options" then "Use in this document" to enable it.`,
+        ui.ButtonSet.OK
+      );
     }
   }
 }
