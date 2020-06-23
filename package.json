@@ -4,7 +4,8 @@
   "description": "A G-Suite Add-On that leverages multiple Forms to create custom and dynamic tests with the intent of reducing cheating.",
   "main": "addon/forms4education.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "cd addon && clasp push"
   },
   "repository": {
     "type": "git",

@@ -5,30 +5,34 @@
       rel="stylesheet"
       href="https://ssl.gstatic.com/docs/script/css/add-ons.css"
     />
-    <script>
-      document.getElementById("formId").addEventListener("submit", submitForm);
-    </script>
+    <style>
+      .formItem > label {
+        display:inline-block;
+        text-align: right;
+        width: 8em;
+      }
+    </style>
   </head>
   <body>
     <form id="formId">
-      <div>
+      <div class="formItem">
         <label for="testName"><?= getLocalizedText("insertName") ?></label>
         <input type="text" name="testName" id="testName" />
       </div>
-      <div>
+      <div class="formItem">
         <label for="testName"><?= getLocalizedText("startDate") ?></label>
         <input type="datetime" name="startDate" id="startDate" />
       </div>
-      <div>
+      <div class="formItem">
         <label for="testName"><?= getLocalizedText("endDate") ?></label>
         <input type="datetime" name="endDate" id="endDate" />
       </div>
       <div>
         <h3><?= getLocalizedText("student") ?></h3>
         <? for (var i = 0; i < students.length; i++) { ?>
-          <div>
-            <input type="checkbox" id="student<?=i>" name="student<?=i>" value="<?= students[i].email>" />
-            <label for="student<?=i>"><?= students[i].name></label>
+          <div class="formItem">
+            <input type="checkbox" id="student<?= i ?>" name="student" value="<?= students[i].email ?>" />
+            <label for="student<?= i ?>"><?= students[i].name ?></label>
           </div>
           </tr>
         <? } ?>
@@ -36,18 +40,36 @@
       <div>
         <h3><?= getLocalizedText("questionBank") ?></h3>
         <? for (var i = 0; i < questionBanks.length; i++) { ?>
-          <div>
-            <input type="checkbox" id="questionBanks<?=i>" name="questionBanks<?=i>" value="<?= questionBanks[i].name>" />
-            <label for="questionBanks<?=i>"><?= questionBanks[i].name></label>
+          <div class="formItem">
+            <input type="checkbox" id="questionBanks<?= i ?>" name="questionBanks" value="<?= questionBanks[i].name ?>" />
+            <label for="questionBanks<?= i ?>"><?= questionBanks[i].name ?></label>
           </div>
           </tr>
         <? } ?>
       </div>
+      <div>
+        <input class="green" type="submit" value="<?= getLocalizedText("createNew") ?>" />
+      </div>
     </form>
     <script>
-      submitForm = function () {
+      var submitForm = function (e) {
         var form = document.getElementById("formId");
+        var formData = {};
+        for (e of form.elements) {
+          console.log(e.name, e.value);
+          if (formData[e.name]==undefined) {
+            formData[e.name] = e.value;
+          } else if (Array.isArray(formData[e.name])) {
+            formData[e.name].push(e.value);
+          } else {
+            formData[e.name] = [formData[e.name], e.value];
+          }
+        }
+        google.script.run.insertTest(formData);
+        google.script.host.close();
       };
+
+      document.getElementById("formId").addEventListener("submit", submitForm, false);
     </script>
   </body>
 </html>

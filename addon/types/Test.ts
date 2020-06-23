@@ -1,4 +1,5 @@
 import { getLocalizedText } from "../ui/localization";
+import { Constants } from "./constants";
 
 class Test {
   name: string;
@@ -47,6 +48,21 @@ namespace Forms4Education {
         `${getLocalizedText("createNew")} - ${getLocalizedText("test")}`
       );
     }
-    export function insertTest() {}
+    export function insertTest(formData: {
+      testName: string;
+      startDate: Date;
+      endDate: Date;
+      student: string[];
+      questionBanks: string[];
+    }) {
+      const testSheet = SpreadsheetApp.getActive().getSheetByName(
+        Constants.sheetNames.tests
+      );
+
+      const students = Forms4Education.Students.loadStudentsFromSheet();
+      const questionBanks = Forms4Education.QuestionBanks.loadQuestionBanksFromSheet();
+
+      testSheet.appendRow([]);
+    }
   }
 }

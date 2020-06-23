@@ -24,6 +24,9 @@ export function getLocalizedText(
 }
 
 const localizedStrings = {
+  cancel: {
+    en: "Cancel",
+  },
   createNew: {
     en: "Create",
   },
