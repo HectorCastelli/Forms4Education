@@ -34,7 +34,7 @@ namespace Forms4Education {
           [getLocalizedText("name"), getLocalizedText("weight"), getLocalizedText("mandatoryQuestions"), getLocalizedText("optionalQuestions")],
           ...test.questionBanks.map(questionConfig=>[questionConfig.questionBank.name, questionConfig.gradeWeight, questionConfig.mandatoryQuestions, questionConfig.optionalQuestions]),
           [getLocalizedText("student"), null, null, null],
-          [getLocalizedText("name"), getLocalizedText("email"), null, null],
+          [getLocalizedText("name"), getLocalizedText("email"), getLocalizedText("studentTestId"), getLocalizedText("sent")],
           ...test.students.map(student=>[student.name, student.email, null, null])
         ]);
       }
